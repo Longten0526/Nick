@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜數字遊戲</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>猜數字遊戲</h1>
+    <p>猜一個 1 到 100 之間的數字：</p>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">確認</button>
+    <p id="message"></p>
+
+    <script>
+        // 產生一個1到100之間的隨機數字
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guess').value);
+            attempts++;
+
+            if (guess === targetNumber) {
+                document.getElementById('message').innerHTML = `恭喜！你猜對了！你用了 ${attempts} 次。`;
+            } else if (guess < targetNumber) {
+                document.getElementById('message').innerHTML = `太小了，再試一次。`;
+            } else {
+                document.getElementById('message').innerHTML = `太大了，再試一次。`;
+            }
+        }
+    </script>
+</body>
+</html>
